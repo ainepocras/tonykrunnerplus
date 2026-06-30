@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tony K Runner Plus</title>
+    <title>Tony K Runner Plus - 28 Years of Hobby-Running</title>
     <style>
         * {
             margin: 0;
@@ -14,21 +14,23 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #ffffff;
+            background: #0a0e27;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         /* Navigation */
         nav {
-            background: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 1rem 2rem;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
         }
 
         nav .container {
@@ -42,7 +44,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -56,13 +58,29 @@
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #b0b8d4;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FF6B35 0%, #00D4FF 100%);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
-            color: #667eea;
+            color: #FF6B35;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -72,33 +90,91 @@
             align-items: center;
             justify-content: center;
             padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 100%);
+        }
+
+        /* Animated Neon Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23FF6B35;stop-opacity:0.1" /><stop offset="100%" style="stop-color:%2300D4FF;stop-opacity:0.1" /></linearGradient></defs><path d="M0,150 Q300,100 600,150 T1200,150" stroke="url(%23grad1)" stroke-width="3" fill="none" opacity="0.6"/><path d="M0,200 Q300,250 600,200 T1200,200" stroke="url(%23grad1)" stroke-width="2" fill="none" opacity="0.4"/><path d="M0,100 Q300,50 600,100 T1200,100" stroke="url(%23grad1)" stroke-width="2" fill="none" opacity="0.5"/></svg>');
+            background-repeat: repeat-x;
+            animation: wave 8s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Neon glow effect overlays */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
         }
 
         .hero-content {
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-number {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3));
         }
 
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
+            margin-bottom: 1rem;
+            color: #ffffff;
             line-height: 1.2;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        .hero h1 span {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #555;
-            margin-bottom: 2rem;
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #8899b5;
+            margin-bottom: 2.5rem;
             line-height: 1.8;
+            letter-spacing: 2px;
         }
 
         .cta-buttons {
@@ -109,43 +185,50 @@
         }
 
         .btn {
-            padding: 0.875rem 2.5rem;
-            border-radius: 0.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5),
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.8),
+                        inset 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            background: transparent;
+            color: #00D4FF;
+            border: 2px solid #00D4FF;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
         }
 
         .btn-secondary:hover {
-            background: #f0f4ff;
-            transform: translateY(-2px);
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
         }
 
         /* Features Section */
         .features {
-            background: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #0f1535 0%, #0a0e27 100%);
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
         }
 
         .features-container {
@@ -156,58 +239,130 @@
         .features h2 {
             text-align: center;
             font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            color: #8899b5;
             margin-bottom: 3rem;
-            color: #1a1a1a;
+            font-size: 1.1rem;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .feature-card {
-            padding: 2rem;
-            background: #f8fafc;
-            border-radius: 0.75rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(15, 21, 53, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
+            border-radius: 1rem;
             transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF6B35 0%, #00D4FF 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
-            border-color: #667eea;
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2),
+                        0 0 20px rgba(255, 107, 53, 0.1);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            color: #1a1a1a;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
         }
 
         .feature-card p {
-            color: #666;
-            line-height: 1.6;
+            color: #8899b5;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: #FF6B35;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            color: #8899b5;
+            font-size: 1.1rem;
         }
 
         /* Footer */
         footer {
-            background: #1a1a1a;
-            color: white;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            color: #b0b8d4;
             text-align: center;
             padding: 2rem;
             margin-top: auto;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
         }
 
         footer p {
             font-size: 0.9rem;
             opacity: 0.8;
+        }
+
+        footer a {
+            color: #FF6B35;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00D4FF;
         }
 
         /* Responsive */
@@ -217,12 +372,17 @@
                 font-size: 0.9rem;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero-number {
+                font-size: 3.5rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 1.5px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
             }
 
             .cta-buttons {
@@ -244,18 +404,41 @@
                 gap: 1rem;
             }
 
-            .hero {
-                padding: 2rem 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
             nav ul {
                 flex-direction: column;
                 gap: 0.5rem;
                 text-align: center;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero-number {
+                font-size: 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .btn {
+                padding: 0.875rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .features h2 {
+                font-size: 1.5rem;
+            }
+
+            .stat-item h4 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -264,10 +447,10 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">🏃 Tony K Runner Plus</div>
+            <div class="logo">🏃 TONY K RUNNER</div>
             <ul>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -276,11 +459,34 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to <span>Tony K Runner Plus</span></h1>
-            <p>Experience the ultimate running companion with advanced tracking, analytics, and personalized insights to elevate your performance.</p>
+            <div class="hero-number">28</div>
+            <h1>Years of Hobby-Running</h1>
+            <p class="hero-subtitle">Madrid • Alkmaar • The Journey Continues</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-primary">Explore My Journey</button>
                 <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h4>28+</h4>
+                <p>Years Running</p>
+            </div>
+            <div class="stat-item">
+                <h4>2 Cities</h4>
+                <p>Across Continents</p>
+            </div>
+            <div class="stat-item">
+                <h4>10K+</h4>
+                <p>Miles Covered</p>
+            </div>
+            <div class="stat-item">
+                <h4>Forever</h4>
+                <p>Passion Strong</p>
             </div>
         </div>
     </section>
@@ -288,37 +494,38 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="features-container">
-            <h2>Why Choose Tony K Runner Plus?</h2>
+            <h2>Performance & Insights</h2>
+            <p class="features-subtitle">Advanced Tracking for Serious Runners</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Real-Time Analytics</h3>
-                    <p>Track your performance metrics in real-time with detailed insights and comprehensive statistics.</p>
+                    <p>Track your performance metrics in real-time with detailed insights and comprehensive statistics across all your runs.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
                     <h3>Smart Goals</h3>
-                    <p>Set personalized running goals and get intelligent recommendations to achieve them faster.</p>
+                    <p>Set personalized running goals and get intelligent recommendations to achieve them faster with data-driven guidance.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏆</div>
                     <h3>Performance Tracking</h3>
-                    <p>Monitor your progress over time with visual charts and historical data analysis.</p>
+                    <p>Monitor your progress over time with visual charts and detailed historical data analysis of your running journey.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Lightning Fast</h3>
-                    <p>Experience blazingly fast performance with our optimized tracking engine.</p>
+                    <p>Experience blazingly fast performance with our optimized tracking engine designed for serious athletes.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3>Mobile Friendly</h3>
-                    <p>Access your data anywhere with our responsive mobile-optimized interface.</p>
+                    <h3>Mobile Optimized</h3>
+                    <p>Access your data anywhere with our responsive mobile-optimized interface for on-the-go tracking.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
                     <h3>Secure & Private</h3>
-                    <p>Your data is encrypted and kept private with industry-standard security protocols.</p>
+                    <p>Your data is encrypted and kept private with industry-standard security protocols and privacy standards.</p>
                 </div>
             </div>
         </div>
@@ -326,7 +533,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Tony K Runner Plus. All rights reserved. Built with ❤️ for runners.</p>
+        <p>&copy; 2024 Tony K Runner Plus. Built with ❤️ for runners worldwide. | <a href="#">Privacy</a> • <a href="#">Terms</a> • <a href="#">Contact</a></p>
     </footer>
 </body>
 </html>
